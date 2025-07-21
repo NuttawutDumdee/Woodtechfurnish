@@ -108,7 +108,7 @@ export default function WhyChooseUsSection() {
         ))}
       </Box>
 
-      <GallerySection image={'/Images/Gallery2.jpg'} />
+      <GallerySection image={'/images/Gallery2.jpg'} />
     </Box>
   );
 }

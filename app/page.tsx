@@ -16,11 +16,11 @@ export default function HomePage() {
       
       <HeroSection />
 
-      <GallerySection image={'/Images/Gallery4.jpg'} />
+      <GallerySection image={'/images/Gallery4.jpg'} />
 
-      <GallerySection image={'/Images/Gallery1.jpg'} />
+      <GallerySection image={'/images/Gallery1.jpg'} />
 
-      <GallerySection image={'/Images/Gallery5.jpg'} />
+      <GallerySection image={'/images/Gallery5.jpg'} />
 
       <PortfolioPreviewSection />
 
