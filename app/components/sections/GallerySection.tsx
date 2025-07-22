@@ -8,14 +8,13 @@ interface GallerySectionProps {
 
 export default function GallerySection({ image, alt = "Gallery Image" }: GallerySectionProps) {
     return (
-        <section className="relative w-full aspect-[16/9] mt-6 rounded-xl overflow-hidden shadow-lg">
+        <section className="relative w-full aspect-[16/9] mt-6 rounded-xl overflow-hidden shadow-lg border border-red-500">
             <Image
                 src={image}
                 alt={alt}
-                width={1280}
-                height={720}
-                className="object-cover"
-                priority
+                width={1200}
+                height={675}
+                className="object-cover w-full h-auto rounded-xl shadow-lg"
             />
         </section>
     );
