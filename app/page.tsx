@@ -13,7 +13,7 @@ export default function HomePage() {
   return (
     <main className="space-y-20">
       <Navbar />
-      
+
       <HeroSection />
 
       <GallerySection image={'/images/Gallery4.jpg'} />

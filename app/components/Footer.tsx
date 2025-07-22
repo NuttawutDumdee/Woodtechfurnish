@@ -49,12 +49,11 @@ export default function Footer() {
             gap: 3,
           }}
         >
-          <Image
+          <img
             src="/Images/logo-woodtech-02.jpg"
             alt="WoodTech Furnish"
             width={180}
             height={68}
-            priority
           />
           <Typography
             sx={{
