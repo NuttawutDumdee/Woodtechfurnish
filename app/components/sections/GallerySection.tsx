@@ -12,7 +12,8 @@ export default function GallerySection({ image, alt = "Gallery Image" }: Gallery
             <Image
                 src={image}
                 alt={alt}
-                fill
+                width={1280}
+                height={720}
                 className="object-cover"
                 priority
             />
