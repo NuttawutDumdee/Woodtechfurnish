@@ -1,6 +1,5 @@
 'use client';
 
-import Image from 'next/image';
 import {
   Box,
   Typography,
@@ -50,7 +49,7 @@ export default function Footer() {
           }}
         >
           <img
-            src="/Images/logo-woodtech-02.jpg"
+            src="/images/logo-woodtech-02.jpg"
             alt="WoodTech Furnish"
             width={180}
             height={68}

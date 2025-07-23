@@ -2,6 +2,7 @@
 import { useEffect } from 'react';
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
+import Navbar from '../components/Navbar/Navbar';
 
 const tiktokVideoIds = [
     '7498186558047145234',
@@ -22,8 +23,9 @@ export default function TikTokPage() {
 
     return (
         <div className="max-w-5xl mx-auto px-4 py-12 space-y-12">
+            <Navbar />
             {/* Back Button */}
-            <div className="mb-6">
+            <div className="mb-6 mt-10">
                 <Link
                     href="/"
                     className="inline-flex items-center text-pink-600 hover:text-pink-800 transition-colors"

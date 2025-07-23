@@ -1,5 +1,8 @@
+'use client';
+
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
+import Navbar from '../components/Navbar/Navbar';
 
 const videoIds = [
     'KNBRGhGnlSY',
@@ -27,8 +30,8 @@ const shortIds = [
 export default function YouTubeVideosGallery() {
     return (
         <div className="max-w-5xl mx-auto px-4 py-12 space-y-16">
-            {/* Back Button */}
-            <div className="mb-6">
+            <Navbar />
+            <div className="mb-6 mt-10">
                 <Link
                     href="/"
                     className="inline-flex items-center text-red-600 hover:text-red-800 transition-colors"
@@ -38,12 +41,10 @@ export default function YouTubeVideosGallery() {
                 </Link>
             </div>
 
-            {/* Title */}
             <h1 className="text-3xl font-bold mb-8 text-center text-red-600">
                 YouTube Videos Gallery
             </h1>
 
-            {/* Regular Videos Section */}
             <section>
                 <h2 className="text-2xl font-semibold mb-6 text-center text-red-700">
                     Videos
@@ -68,7 +69,6 @@ export default function YouTubeVideosGallery() {
                 </div>
             </section>
 
-            {/* Shorts Videos Section */}
             <section>
                 <h2 className="text-2xl font-semibold mb-6 text-center text-pink-600">
                     Shorts

@@ -1,5 +1,4 @@
 // components/GallerySection.tsx (Server Component, รองรับ SSG)
-import Image from "next/image";
 
 interface GallerySectionProps {
     image: string;

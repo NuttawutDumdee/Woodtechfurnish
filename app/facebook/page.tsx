@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
+import Navbar from '../components/Navbar/Navbar';
 
 export default function FacebookPage() {
     const [loaded, setLoaded] = useState(false);
@@ -20,8 +21,9 @@ export default function FacebookPage() {
 
     return (
         <div className="max-w-6xl mx-auto px-4 py-12">
+            <Navbar />
             {/* Back Button */}
-            <div className="mb-6">
+            <div className="mb-6 mt-10">
                 <Link
                     href="/"
                     className="inline-flex items-center text-blue-700 hover:text-blue-900 transition-colors"
