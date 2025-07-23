@@ -78,10 +78,10 @@ export default function Navbar() {
                                     <Link
                                         key={item.href}
                                         href={item.href}
-                                        className="block px-4 py-2 text-zinc-700 hover:bg-zinc-100"
+                                        className="block px-10 py-3 text-zinc-700 hover:bg-zinc-50"
                                         onClick={() => {
                                             setIsDropdownOpen(false);
-                                            setIsOpen(false);
+                                            setTimeout(() => setIsOpen(false), 100);
                                         }}
                                     >
                                         {item.label}
@@ -139,7 +139,7 @@ export default function Navbar() {
                                                 className="block px-10 py-3 text-zinc-700 hover:bg-zinc-50"
                                                 onClick={() => {
                                                     setIsDropdownOpen(false);
-                                                    setIsOpen(false);
+                                                    setTimeout(() => setIsOpen(false), 100);
                                                 }}
                                             >
                                                 {item.label}
