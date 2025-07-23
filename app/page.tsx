@@ -8,6 +8,7 @@ import Footer from "./components/Footer";
 import OurProcessSection from "./components/sections/OurProcessSection";
 import SocialButtons from "./components/sections/Menu";
 import WhyChooseUsSection from "./components/sections/WhyChooseUsSection";
+import GallerySectionHomePage from "./components/sections/GallerySectionHomePage";
 
 export default function HomePage() {
   return (
@@ -23,6 +24,8 @@ export default function HomePage() {
       <GallerySection image={'/images/Gallery5.jpg'} />
 
       <PortfolioPreviewSection />
+
+      <GallerySectionHomePage/>
 
       <WhyChooseUsSection />
 

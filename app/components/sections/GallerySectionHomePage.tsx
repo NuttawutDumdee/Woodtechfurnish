@@ -1,70 +1,89 @@
 'use client';
 
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 
-const images = [
-    '/images/gallery/gallery1.jpg',
-    '/images/gallery/gallery2.jpg',
-    '/images/gallery/gallery3.jpg',
-    '/images/gallery/gallery4.jpg',
-    '/images/gallery/gallery5.jpg',
-];
-
-const GallerySectionHomePage = () => {
-    const [index, setIndex] = useState(0);
-
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setIndex((prev) => (prev + 1) % images.length);
-        }, 4000); // เปลี่ยนรูปทุก 4 วินาที
-
-        return () => clearInterval(interval);
-    }, []);
-
-    return (
-        <section className="bg-background py-16 px-4 md:px-10">
-            <div className="max-w-6xl mx-auto text-center">
-                <h2 className="text-3xl md:text-4xl font-semibold text-textPrimary mb-8 font-kanit">
-                    ผลงานของเรา
-                </h2>
-
-                <div className="relative w-full h-[300px] md:h-[500px] overflow-hidden rounded-2xl shadow-lg">
-                    <AnimatePresence initial={false} mode="wait">
-                        <motion.div
-                            key={index}
-                            className="absolute w-full h-full"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            exit={{ opacity: 0 }}
-                            transition={{ duration: 0.8 }}
-                        >
-                            <Image
-                                src={images[index]}
-                                alt={`Gallery ${index + 1}`}
-                                fill
-                                className="object-cover"
-                                priority
-                            />
-                        </motion.div>
-                    </AnimatePresence>
-                </div>
-
-                <div className="flex justify-center mt-6 gap-2">
-                    {images.map((_, i) => (
-                        <button
-                            key={i}
-                            onClick={() => setIndex(i)}
-                            className={`w-3 h-3 rounded-full transition-all ${i === index ? 'bg-primary' : 'bg-gray-300'
-                                }`}
-                            aria-label={`Go to image ${i + 1}`}
-                        />
-                    ))}
-                </div>
-            </div>
-        </section>
-    );
+const galleryData = {
+    Design: [
+        { src: '/images/design1.jpg', alt: 'Design image 1' },
+        { src: '/images/design2.jpg', alt: 'Design image 2' },
+        { src: '/images/design3.jpg', alt: 'Design image 3' },
+        { src: '/images/design4.jpg', alt: 'Design image 3' },
+        { src: '/images/design5.jpg', alt: 'Design image 3' },
+        { src: '/images/design6.jpg', alt: 'Design image 3' },
+    ],
+    Production: [
+        { src: '/images/production1.jpg', alt: 'Production image 1' },
+        { src: '/images/production2.jpg', alt: 'Production image 2' },
+        { src: '/images/production3.jpg', alt: 'Production image 3' },
+        { src: '/images/production4.jpg', alt: 'Production image 3' },
+        { src: '/images/production5.jpg', alt: 'Production image 3' },
+        { src: '/images/production6.jpg', alt: 'Production image 3' },
+    ],
+    Warehouse: [
+        { src: '/images/warehouse1.jpg', alt: 'Warehouse image 1' },
+        { src: '/images/warehouse2.jpg', alt: 'Warehouse image 2' },
+        { src: '/images/warehouse3.jpg', alt: 'Warehouse image 3' },
+        { src: '/images/warehouse4.jpg', alt: 'Warehouse image 3' },
+        { src: '/images/warehouse5.jpg', alt: 'Warehouse image 3' },
+    ],
+    Shipping: [
+        { src: '/images/shipping1.jpg', alt: 'Shipping image 1' },
+        { src: '/images/shipping2.jpg', alt: 'Shipping image 2' },
+        { src: '/images/shipping3.jpg', alt: 'Shipping image 3' },
+    ],
 };
 
-export default GallerySectionHomePage;
+function GallerySlider({ images }: { images: { src: string; alt?: string }[] }) {
+    return (
+        <Swiper
+            modules={[Navigation, Pagination, Autoplay]}
+            navigation
+            pagination={{ clickable: true }}
+            autoplay={{ delay: 3500, disableOnInteraction: false }}
+            loop
+            spaceBetween={20}
+            slidesPerView={1}
+            breakpoints={{
+                640: { slidesPerView: 2 },
+                1024: { slidesPerView: 3 },
+            }}
+        >
+            {images.map(({ src, alt }, idx) => (
+                <SwiperSlide key={idx}>
+                    <div className="relative aspect-[16/9] w-full rounded-lg overflow-hidden shadow-lg border border-gray-300">
+                        <Image
+                            src={src}
+                            alt={alt ?? `Gallery image ${idx + 1}`}
+                            fill
+                            style={{ objectFit: 'cover' }}
+                            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                            priority={idx === 0}
+                        />
+                    </div>
+                </SwiperSlide>
+            ))}
+        </Swiper>
+    );
+}
+
+export default function GallerySection() {
+    return (
+        <section className="max-w-7xl mx-auto py-12 px-4 space-y-16">
+            {Object.entries(galleryData).map(([category, images]) => (
+                <div key={category}>
+                    <h2 className="text-3xl font-semibold mb-6 text-center text-gray-800">
+                        {category}
+                    </h2>
+                    <GallerySlider images={images} />
+                </div>
+            ))}
+        </section>
+    );
+}
