@@ -2,6 +2,7 @@
 
 import { Box, Typography, Button, Stack } from "@mui/material";
 import Image from "next/image";
+import { SparklesText } from "@/components/magicui/sparkles-text";
 
 export default function HeroSection() {
     return (
@@ -48,7 +49,7 @@ export default function HeroSection() {
                     px: 3,
                 }}
             >
-                <Typography
+                {/* <Typography
                     variant="h3"
                     fontWeight="bold"
                     sx={{
@@ -59,8 +60,8 @@ export default function HeroSection() {
                     }}
                 >
                     Furniture OEM & Built-in
-                </Typography>
-
+                </Typography> */}
+                <SparklesText>Furniture OEM & Built-in</SparklesText>
                 <Typography
                     variant="h6"
                     sx={{

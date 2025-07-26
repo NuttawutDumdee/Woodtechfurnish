@@ -3,6 +3,7 @@ import { query } from '../lib/db';
 import Navbar from '../components/Navbar/Navbar';
 import Footer from '../components/Footer';
 import clsx from 'clsx';
+import { ComicText } from "@/components/magicui/comic-text";
 
 interface PortfolioItem {
     id: number;
@@ -29,7 +30,7 @@ export default async function PortfolioPage() {
             <Navbar />
             <main className="max-w-7xl mx-auto flex-grow px-6 sm:px-10 py-20">
                 <h1 className="text-4xl sm:text-5xl font-extrabold mb-16 text-gray-900 tracking-wide drop-shadow-md">
-                    ผลงานของเรา
+                    <ComicText>Portfolio</ComicText>
                 </h1>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-16">

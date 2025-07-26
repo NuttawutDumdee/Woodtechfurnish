@@ -9,6 +9,7 @@ import OurProcessSection from "./components/sections/OurProcessSection";
 import SocialButtons from "./components/sections/Menu";
 import WhyChooseUsSection from "./components/sections/WhyChooseUsSection";
 import GallerySectionHomePage from "./components/sections/GallerySectionHomePage";
+import { TimelineDemo } from "./components/TimelineDemo";
 
 export default function HomePage() {
   return (
@@ -25,7 +26,8 @@ export default function HomePage() {
 
       <PortfolioPreviewSection />
 
-      <GallerySectionHomePage/>
+      {/* <GallerySectionHomePage /> */}
+      <TimelineDemo />
 
       <WhyChooseUsSection />
 

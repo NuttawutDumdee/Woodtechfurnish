@@ -1,7 +1,8 @@
 import { query } from '@/app/lib/db';
-import { Box, Typography, Container, Paper, Button } from '@mui/material';
+import { Box, Typography, Container, Button } from '@mui/material';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import { ParallaxScroll } from '@/app/components/ui/parallax-scroll';
 
 interface Portfolio {
   id: number;
@@ -11,10 +12,8 @@ interface Portfolio {
   images: { id: number; imageUrl: string }[];
 }
 
-// ระบุ ID ของรูปภาพที่ต้องการแสดงขนาดจริง (objectFit: contain)
 const containImageIds = [223, 208, 190, 120, 107, 145, 247, 287, 274];
 
-// กำหนดชนิดคืนค่าชัดเจนว่าเป็น Promise อาร์เรย์ของ obj ที่มี slug string
 export async function generateStaticParams(): Promise<{ slug: string }[]> {
   const portfolios = await query('SELECT slug FROM portfolio');
   return portfolios.map((p: { slug: string }) => ({
@@ -22,27 +21,17 @@ export async function generateStaticParams(): Promise<{ slug: string }[]> {
   }));
 }
 
-// กำหนดชนิด props ให้ตรงกับที่ Next.js คาดหวัง
-type PageProps = {
-  params: {
-    slug: string;
-  };
-};
-
 export default async function PortfolioPage({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params; // await เพื่อดึง slug จริง
+  const { slug } = await params;
 
-  // ดึงข้อมูล portfolio ตาม slug
   const portfolios = await query('SELECT * FROM portfolio WHERE slug = ?', [slug]);
 
-  // ถ้าไม่เจอข้อมูลให้เรียก notFound() เพื่อแสดง 404
   if (!portfolios || portfolios.length === 0) {
     notFound();
   }
 
   const portfolio = portfolios[0];
 
-  // ดึงรูปภาพทั้งหมดของ portfolio นี้
   const images = await query(
     'SELECT id, imageUrl FROM portfolio_image WHERE portfolioId = ?',
     [portfolio.id]
@@ -55,6 +44,32 @@ export default async function PortfolioPage({ params }: { params: Promise<{ slug
 
   return (
     <Container maxWidth="lg" sx={{ py: 8 }}>
+          <Box sx={{ mt: 2, mb: 6, textAlign: 'left' }}>
+      <Button
+        component={Link}
+        href="/portfolio"
+        variant="outlined"
+        // startIcon={<ArrowBackIcon />}
+        size="large"
+        sx={{
+          borderRadius: 8,
+          px: 3,
+          py: 1.5,
+          fontWeight: 'bold',
+          transition: 'all 0.3s ease',
+          borderColor: 'primary.main',
+          color: 'primary.main',
+          '&:hover': {
+            backgroundColor: 'primary.main',
+            color: '#fff',
+            boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+            borderColor: 'primary.main',
+          },
+        }}
+      >
+        กลับไปหน้าผลงาน
+      </Button>
+    </Box>
       <Typography
         variant="h3"
         component="h1"
@@ -80,63 +95,20 @@ export default async function PortfolioPage({ params }: { params: Promise<{ slug
         {portfolioData.description}
       </Typography>
 
-      <Box
-        sx={{
-          display: 'flex',
-          flexWrap: 'wrap',
-          gap: 3,
-          justifyContent: 'center',
-        }}
-      >
-        {portfolioData.images.length > 0 ? (
-          portfolioData.images.map((img) => {
-            const isContain = containImageIds.includes(img.id);
-            return (
-              <Paper
-                key={img.id}
-                elevation={4}
-                sx={{
-                  borderRadius: 3,
-                  overflow: 'hidden',
-                  cursor: 'zoom-in',
-                  flex: '1 1 calc(33.333% - 16px)',
-                  maxWidth: 360,
-                  minWidth: 280,
-                  boxShadow: '0 8px 16px rgb(0 0 0 / 0.1)',
-                  transition: 'box-shadow 0.3s ease',
-                  '&:hover': {
-                    boxShadow: '0 12px 24px rgb(0 0 0 / 0.2)',
-                  },
-                  '& img': {
-                    width: isContain ? 'auto' : '100%',
-                    height: isContain ? 'auto' : 260,
-                    maxHeight: isContain ? 400 : 'none',
-                    objectFit: isContain ? 'contain' : 'cover',
-                    display: 'block',
-                    margin: '0 auto',
-                    transition: 'transform 0.4s ease',
-                    '&:hover': {
-                      transform: 'scale(1.07)',
-                    },
-                  },
-                }}
-              >
-                <img src={img.imageUrl} alt={portfolioData.title} />
-              </Paper>
-            );
-          })
-        ) : (
-          <Typography variant="body2" color="text.secondary" sx={{ mt: 2 }}>
-            ไม่มีรูปภาพสำหรับผลงานนี้
-          </Typography>
-        )}
-      </Box>
+      {portfolioData.images.length > 0 ? (
+        <ParallaxScroll
+          images={portfolioData.images.map((img) => ({
+            src: img.imageUrl,
+            contain: containImageIds.includes(img.id),
+          }))}
+        />
+      ) : (
+        <Typography variant="body2" color="text.secondary" sx={{ mt: 2 }}>
+          ไม่มีรูปภาพสำหรับผลงานนี้
+        </Typography>
+      )}
 
-      <Box sx={{ mt: 6, textAlign: 'center' }}>
-        <Button component={Link} href="/portfolio" variant="outlined" color="primary" size="large">
-          กลับไปหน้าผลงาน
-        </Button>
-      </Box>
+
     </Container>
   );
 }
