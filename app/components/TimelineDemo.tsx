@@ -1,159 +1,92 @@
 'use client';
 
-import React from "react";
+import React, { useState } from "react";
 import { Timeline } from "./ui/timeline";
+import Lightbox from 'yet-another-react-lightbox';
+import 'yet-another-react-lightbox/styles.css';
+
+const containImageIds = [223, 208, 190, 120, 107, 145, 247, 287, 274]; // ตัวอย่าง ID
 
 export function TimelineDemo() {
+    const [lightboxOpen, setLightboxOpen] = useState(false);
+    const [lightboxIndex, setLightboxIndex] = useState(0);
+    const [slides, setSlides] = useState<any[]>([]);
+
+    const allImages: { src: string, alt: string }[] = [];
+
     const data = [
         {
             title: "Design",
-            content: (
-                <div>
-                    <p className="mb-8 text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200">
-                    </p>
-                    <div className="grid grid-cols-2 gap-4">
-                        <img
-                            src="/images/design1.jpg"
-                            alt="startup template"
-                            width={500}
-                            height={500}
-                            className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
-                        />
-                        <img
-                            src="/images/design2.jpg"
-                            alt="startup template"
-                            width={500}
-                            height={500}
-                            className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
-                        />
-                        <img
-                            src="/images/design3.jpg"
-                            alt="startup template"
-                            width={500}
-                            height={500}
-                            className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
-                        />
-                        <img
-                            src="/images/design4.jpg"
-                            alt="startup template"
-                            width={500}
-                            height={500}
-                            className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
-                        />
-                    </div>
-                </div>
-            ),
+            images: ["design1", "design2", "design3", "design4", "design5", "design6"],
         },
         {
             title: "Production",
-            content: (
-                <div>
-                    <div className="grid grid-cols-2 gap-4">
-                        <img
-                            src="/images/production1.jpg"
-                            alt="hero template"
-                            width={500}
-                            height={500}
-                            className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
-                        />
-                        <img
-                            src="/images/production2.jpg"
-                            alt="feature template"
-                            width={500}
-                            height={500}
-                            className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
-                        />
-                        <img
-                            src="/images/production3.jpg"
-                            alt="bento template"
-                            width={500}
-                            height={500}
-                            className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
-                        />
-                        <img
-                            src="/images/production4.jpg"
-                            alt="cards template"
-                            width={500}
-                            height={500}
-                            className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
-                        />
-                    </div>
-                </div>
-            ),
+            images: ["production1", "production2", "production3", "production4", "production5", "production6"],
         },
         {
             title: "Warehouse",
-            content: (
-                <div>
-                    <div className="mb-8">
-                    </div>
-                    <div className="grid grid-cols-2 gap-4">
-                        <img
-                            src="/images/warehouse1.jpg"
-                            alt="hero template"
-                            width={500}
-                            height={500}
-                            className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
-                        />
-                        <img
-                            src="/images/warehouse2.jpg"
-                            alt="feature template"
-                            width={500}
-                            height={500}
-                            className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
-                        />
-                        <img
-                            src="/images/warehouse3.jpg"
-                            alt="bento template"
-                            width={500}
-                            height={500}
-                            className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
-                        />
-                        <img
-                            src="/images/warehouse4.jpg"
-                            alt="cards template"
-                            width={500}
-                            height={500}
-                            className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
-                        />
-                    </div>
-                </div>
-            ),
+            images: ["warehouse1", "warehouse2", "warehouse3", "warehouse4", "warehouse5"],
         },
         {
             title: "Shipping",
-            content: (
-                <div>
-                    <div className="grid grid-cols-2 gap-4">
-                        <img
-                            src="/images/shipping1.jpg"
-                            alt="hero template"
-                            width={500}
-                            height={500}
-                            className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
-                        />
-                        <img
-                            src="/images/shipping2.jpg"
-                            alt="feature template"
-                            width={500}
-                            height={500}
-                            className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
-                        />
-                        <img
-                            src="/images/shipping3.jpg"
-                            alt="bento template"
-                            width={500}
-                            height={500}
-                            className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
-                        />
-                    </div>
-                </div>
-            ),
+            images: ["shipping1", "shipping2", "shipping3"],
         },
     ];
+
+    // สร้าง slides จากทั้งหมด พร้อม contain เฉพาะบางภาพ
+    const generateSlides = () => {
+        return allImages.map((img, index) => {
+            const id = parseInt(img.src.match(/\d+/)?.[0] || "-1");
+            return {
+                src: img.src,
+                alt: img.alt,
+                mode: containImageIds.includes(id) ? "contain" : "cover",
+            };
+        });
+    };
+
+    // สร้างเนื้อหา Timeline
+    const timelineData = data.map(section => {
+        const content = (
+            <div className="grid grid-cols-2 gap-4">
+                {section.images.map(name => {
+                    const imgPath = `/images/${name}.jpg`;
+                    const altText = name;
+                    const index = allImages.length;
+
+                    // เพิ่มลงใน allImages สำหรับ Lightbox
+                    allImages.push({ src: imgPath, alt: altText });
+
+                    return (
+                        <img
+                            key={imgPath}
+                            src={imgPath}
+                            alt={altText}
+                            width={500}
+                            height={500}
+                            className="h-20 w-full rounded-lg object-cover cursor-zoom-in shadow-md md:h-44 lg:h-60"
+                            onClick={() => {
+                                setSlides(generateSlides());
+                                setLightboxIndex(index);
+                                setLightboxOpen(true);
+                            }}
+                        />
+                    );
+                })}
+            </div>
+        );
+        return { title: section.title, content };
+    });
+
     return (
         <div className="relative w-full overflow-clip">
-            <Timeline data={data} />
+            <Timeline data={timelineData} />
+            <Lightbox
+                open={lightboxOpen}
+                close={() => setLightboxOpen(false)}
+                slides={slides}
+                index={lightboxIndex}
+            />
         </div>
     );
 }
