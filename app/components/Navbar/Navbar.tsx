@@ -17,16 +17,17 @@ export default function Navbar() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const navLinks: NavLink[] = [
-    { label: 'Home', href: '/' },
-    { label: 'Portfolios', href: '/portfolio' },
-    { label: 'Contact', href: '/contact' },
+    { label: 'HOME', href: '/' },
+    { label: 'PORTFOLIO', href: '/portfolio' },
+    { label: 'CONTACT', href: '/contact' },
+    { label: 'SERVICES', href: '/services' },
     {
-      label: 'Content',
+      label: 'CONTENT',
       dropdown: true,
       children: [
-        { label: 'Facebook', href: '/facebook' },
-        { label: 'TikTok', href: '/tiktok' },
-        { label: 'YouTube', href: '/youtube' },
+        { label: 'FACEBOOK', href: '/facebook' },
+        { label: 'TIKTOK', href: '/tiktok' },
+        { label: 'YOUTUBE', href: '/youtube' },
       ],
     },
   ];
@@ -36,15 +37,20 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center font-serif">
         <Link
           href="/"
-          className="text-2xl md:text-3xl font-bold tracking-tight text-zinc-900"
+          className="flex items-center space-x-10 text-2xl md:text-2xl font-bold tracking-tight text-zinc-900 mr-auto"
           onClick={() => {
             setIsOpen(false);
             setDropdownOpen(false);
           }}
         >
-          Woodtechfurnish
+          <img
+            src="/images/logo-woodtech-02.jpg"
+            alt="Logo"
+            width={80}
+            height={40}
+          />
+          <span>WOOD TECHFUINUSH</span>
         </Link>
-
         {/* Desktop Menu */}
         <div className="hidden md:flex space-x-10 items-center text-base font-light relative">
           {navLinks.map((link) =>

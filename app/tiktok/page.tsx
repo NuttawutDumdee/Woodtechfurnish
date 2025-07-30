@@ -8,7 +8,12 @@ const tiktokVideoIds = [
     '7498186558047145234',
     '7277406360814374149',
     '7423292186348801288',
-    // เพิ่มได้ตามต้องการ
+    '7513767695645478151',
+    '7246594833001794822',
+    '7310451817643625733',
+    '7212460958592159002',
+    '7437819980923653394',
+    '7320440670462790917',
 ];
 
 export default function TikTokPage() {
@@ -24,6 +29,7 @@ export default function TikTokPage() {
     return (
         <div className="max-w-5xl mx-auto px-4 py-12 space-y-12">
             <Navbar />
+
             {/* Back Button */}
             <div className="mb-6 mt-10">
                 <Link
@@ -40,19 +46,21 @@ export default function TikTokPage() {
                 TikTok Videos Gallery
             </h1>
 
-            {/* TikTok Videos Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 justify-center">
-                {tiktokVideoIds.map((videoId) => (
-                    <blockquote
-                        key={videoId}
-                        className="tiktok-embed rounded-xl overflow-hidden shadow-lg border border-pink-200"
-                        cite={`https://www.tiktok.com/@exclusivefurniture__/video/${videoId}`}
-                        data-video-id={videoId}
-                        style={{ width: '100%', minWidth: 300 }}
-                    >
-                        <section></section>
-                    </blockquote>
-                ))}
+            {/* Card ครอบวิดีโอทั้งหมด */}
+            <div className="bg-gray-100 rounded-xl shadow-lg border border-gray-300 p-6">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                    {tiktokVideoIds.map((videoId) => (
+                        <blockquote
+                            key={videoId}
+                            className="tiktok-embed rounded-lg overflow-hidden shadow-md border border-gray-200"
+                            cite={`https://www.tiktok.com/@exclusivefurniture__/video/${videoId}`}
+                            data-video-id={videoId}
+                            style={{ width: '100%', minWidth: 280 }}
+                        >
+                            <section></section>
+                        </blockquote>
+                    ))}
+                </div>
             </div>
         </div>
     );

@@ -1,35 +1,52 @@
 'use client';
 
-import { useState } from 'react';
-import Lightbox from 'yet-another-react-lightbox';
-import 'yet-another-react-lightbox/styles.css';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 
-interface GallerySectionProps {
-    image: string;
-    alt?: string;
-}
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
-export default function GallerySection({ image, alt = "Gallery Image" }: GallerySectionProps) {
-    const [open, setOpen] = useState(false);
+const images = [
+    { src: '/images/Woodtech Hero.jpg', alt: 'Gallery Image 1' },
+    { src: '/images/Gallery4.jpg', alt: 'Gallery Image 2' },
+    { src: '/images/Gallery1.jpg', alt: 'Gallery Image 3' },
+    { src: '/images/Gallery5.jpg', alt: 'Gallery Image 4' },
+    { src: '/images/Gallery2.jpg', alt: 'Gallery Image 5' },
+];
 
+export default function FullscreenGallery() {
     return (
-        <section className="relative w-full aspect-[16/9] mt-6 rounded-xl overflow-hidden shadow-lg border border-red-500">
-            <img
-                src={image}
-                alt={alt}
-                width={1200}
-                height={675}
-                className="object-cover w-full h-auto rounded-xl shadow-lg cursor-zoom-in"
-                onClick={() => setOpen(true)}
-            />
-
-            <Lightbox
-                open={open}
-                close={() => setOpen(false)}
-                slides={[{ src: image, alt }]}
-                carousel={{ finite: true, preload: 0 }} // ปิดการวน loop และ preload
-                animation={{ swipe: 0 }} // ปิด swipe animation
-            />
-        </section>
+        <div
+            style={{
+                width: '100vw',
+                height: '100vh',
+                backgroundColor: '#ddddddff', // สีพื้นหลัง
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+            }}
+        >
+            <Swiper
+                modules={[Autoplay, Navigation, Pagination]}
+                spaceBetween={10}
+                slidesPerView={1}
+                navigation
+                pagination={false}
+                autoplay={{ delay: 3000, disableOnInteraction: false }}
+                loop={true}
+                style={{ width: '90%', height: '100%' }}
+            >
+                {images.map((img, i) => (
+                    <SwiperSlide key={i}>
+                        <img
+                            src={img.src}
+                            alt={img.alt}
+                            style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+                        />
+                    </SwiperSlide>
+                ))}
+            </Swiper>
+        </div>
     );
 }

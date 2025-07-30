@@ -9,16 +9,16 @@ export default function HeroSection() {
         <Box
             sx={{
                 position: "relative",
-                height: { xs: "80vh", md: "90vh" },
+                height: { xs: "80vh", md: "80vh" },
                 width: "100%",
-                mt: 10,
+                mt: 14.5,
                 overflow: "hidden",
                 borderRadius: "24px",
             }}
         >
             {/* Background Image */}
             <Image
-                src="/images/Woodtech Hero.jpg"
+                src="/images/Camila.png"
                 alt="Hero Background"
                 fill
                 style={{ objectFit: "cover" }}
@@ -49,18 +49,6 @@ export default function HeroSection() {
                     px: 3,
                 }}
             >
-                {/* <Typography
-                    variant="h3"
-                    fontWeight="bold"
-                    sx={{
-                        mb: 2,
-                        fontSize: { xs: "2rem", md: "3rem" },
-                        lineHeight: 1.2,
-                        textShadow: "0px 2px 4px rgba(0,0,0,0.3)",
-                    }}
-                >
-                    Furniture OEM & Built-in
-                </Typography> */}
                 <SparklesText>Furniture OEM & Built-in</SparklesText>
                 <Typography
                     variant="h6"

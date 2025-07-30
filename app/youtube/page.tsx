@@ -45,53 +45,59 @@ export default function YouTubeVideosGallery() {
                 YouTube Videos Gallery
             </h1>
 
-            <section>
-                <h2 className="text-2xl font-semibold mb-6 text-center text-red-700">
-                    Videos
-                </h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-                    {videoIds.map((id) => (
-                        <div
-                            key={id}
-                            className="aspect-video w-full rounded-lg overflow-hidden shadow-lg border border-red-200"
-                        >
-                            <iframe
-                                src={`https://www.youtube.com/embed/${id}`}
-                                title={`YouTube video ${id}`}
-                                frameBorder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                allowFullScreen
-                                loading="lazy"
-                                className="w-full h-full"
-                            />
-                        </div>
-                    ))}
-                </div>
-            </section>
+            {/* Card for Videos */}
+            <div className="bg-gray-100 rounded-xl shadow-lg border border-red-200 p-6">
+                <section>
+                    <h2 className="text-2xl font-semibold mb-6 text-center text-red-700">
+                        Videos
+                    </h2>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+                        {videoIds.map((id) => (
+                            <div
+                                key={id}
+                                className="aspect-video w-full rounded-lg overflow-hidden shadow-md border border-red-100"
+                            >
+                                <iframe
+                                    src={`https://www.youtube.com/embed/${id}`}
+                                    title={`YouTube video ${id}`}
+                                    frameBorder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowFullScreen
+                                    loading="lazy"
+                                    className="w-full h-full"
+                                />
+                            </div>
+                        ))}
+                    </div>
+                </section>
+            </div>
 
-            <section>
-                <h2 className="text-2xl font-semibold mb-6 text-center text-pink-600">
-                    Shorts
-                </h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-                    {shortIds.map((id) => (
-                        <div
-                            key={id}
-                            className="aspect-[9/16] w-full rounded-lg overflow-hidden shadow-lg border border-pink-200"
-                        >
-                            <iframe
-                                src={`https://www.youtube.com/embed/${id}`}
-                                title={`YouTube Shorts ${id}`}
-                                frameBorder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                allowFullScreen
-                                loading="lazy"
-                                className="w-full h-full"
-                            />
-                        </div>
-                    ))}
-                </div>
-            </section>
+            {/* Card for Shorts */}
+            <div className="bg-gray-100 rounded-xl shadow-lg border border-pink-200 p-6">
+                <section>
+                    <h2 className="text-2xl font-semibold mb-6 text-center text-pink-600">
+                        Shorts
+                    </h2>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+                        {shortIds.map((id) => (
+                            <div
+                                key={id}
+                                className="aspect-[9/16] w-full rounded-lg overflow-hidden shadow-md border border-pink-100"
+                            >
+                                <iframe
+                                    src={`https://www.youtube.com/embed/${id}`}
+                                    title={`YouTube Shorts ${id}`}
+                                    frameBorder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowFullScreen
+                                    loading="lazy"
+                                    className="w-full h-full"
+                                />
+                            </div>
+                        ))}
+                    </div>
+                </section>
+            </div>
         </div>
     );
 }

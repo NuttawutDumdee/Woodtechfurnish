@@ -5,10 +5,7 @@ import CustomerReviewsSection from "./components/review1/CustomerReviewsSection"
 import Navbar from "./components/Navbar/Navbar";
 import PortfolioPreviewSection from "./components/sections/PortfolioPreviewSection";
 import Footer from "./components/Footer";
-import OurProcessSection from "./components/sections/OurProcessSection";
 import SocialButtons from "./components/sections/Menu";
-import WhyChooseUsSection from "./components/sections/WhyChooseUsSection";
-import GallerySectionHomePage from "./components/sections/GallerySectionHomePage";
 import { TimelineDemo } from "./components/TimelineDemo";
 
 export default function HomePage() {
@@ -18,20 +15,11 @@ export default function HomePage() {
 
       <HeroSection />
 
-      <GallerySection image={'/images/Gallery4.jpg'} />
+      <GallerySection />
 
-      <GallerySection image={'/images/Gallery1.jpg'} />
-
-      <GallerySection image={'/images/Gallery5.jpg'} />
-
-      <PortfolioPreviewSection />
-
-      {/* <GallerySectionHomePage /> */}
       <TimelineDemo />
 
-      <WhyChooseUsSection />
-
-      <OurProcessSection />
+      <PortfolioPreviewSection />
 
       <CustomerReviewsSection />
 

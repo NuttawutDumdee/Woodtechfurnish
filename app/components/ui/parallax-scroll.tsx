@@ -56,19 +56,18 @@ export const ParallaxScroll = ({
                                 const globalIndex = startIndex + idx;
                                 return (
                                     <motion.div
-                                        style={{ y: translate }}
+                                        style={{ y: translate, width: 320, height: 240 }}
                                         key={`img-${globalIndex}`}
                                         onClick={() => handleOpen(globalIndex)}
-                                        className="cursor-zoom-in"
+                                        className="cursor-zoom-in relative rounded-lg overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300"
                                     >
                                         <img
                                             src={el.src}
                                             className={cn(
-                                                'h-80 w-full object-cover rounded-lg',
+                                                'rounded-lg transition-transform duration-500 ease-in-out hover:scale-105',
                                                 el.contain ? 'object-contain bg-white' : 'object-cover'
                                             )}
-                                            height={400}
-                                            width={400}
+                                            style={{ width: '100%', height: '100%' }}
                                             alt="portfolio image"
                                         />
                                     </motion.div>

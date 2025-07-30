@@ -12,57 +12,59 @@ import theme from "../src/theme";
 
 export default function ContactPage() {
     return (
-        <div>
-            <Navbar />
-            <div style={{ padding: "2rem" }}>
-                <Box sx={{ py: { xs: 6, md: 10 }, background: 'linear-gradient(180deg, #ffffff, #f4f6f8)' }}>
-                    <ContactHero />
-                    <Container maxWidth="lg">
-                        <Box
-                            sx={{
-                                display: 'flex',
-                                flexDirection: { xs: 'column', md: 'row' },
-                                gap: { xs: 6, md: 10 },
-                                mt: 6,
-                                alignItems: 'flex-start',
-                            }}
-                        >
-                            {/* Contact Info */}
-                            <Box sx={{ flex: 1 }}>
-                                <ContactInfo />
-                            </Box>
-
-                            {/* Contact Form */}
+        <h1>Contact Us
+            <div>
+                <Navbar />
+                <div style={{ padding: "2rem" }}>
+                    <Box sx={{ py: { xs: 6, md: 10 }, background: 'linear-gradient(180deg, #ffffff, #f4f6f8)' }}>
+                        <ContactHero />
+                        <Container maxWidth="lg">
                             <Box
                                 sx={{
-                                    flex: 2,
-                                    p: { xs: 3, md: 4 },
-                                    borderRadius: 4,
-                                    background: 'rgba(255, 255, 255, 0.75)',
-                                    boxShadow: theme.shadows[4],
-                                    backdropFilter: 'blur(8px)',
-                                    WebkitBackdropFilter: 'blur(8px)',
+                                    display: 'flex',
+                                    flexDirection: { xs: 'column', md: 'row' },
+                                    gap: { xs: 6, md: 10 },
+                                    mt: 6,
+                                    alignItems: 'flex-start',
                                 }}
                             >
-                                <Typography variant="h4" fontWeight="bold" gutterBottom align="center">
-                                    ติดต่อทีมงานของเรา
-                                </Typography>
-                                <Typography variant="body1" color="text.secondary" align="center" mb={4}>
-                                    เรายินดีให้คำแนะนำเรื่องการออกแบบและติดตั้งเฟอร์นิเจอร์ Built-in
-                                </Typography>
-                                <ContactForm />
+                                {/* Contact Info */}
+                                <Box sx={{ flex: 1 }}>
+                                    <ContactInfo />
+                                </Box>
+
+                                {/* Contact Form */}
+                                <Box
+                                    sx={{
+                                        flex: 2,
+                                        p: { xs: 3, md: 4 },
+                                        borderRadius: 4,
+                                        background: 'rgba(255, 255, 255, 0.75)',
+                                        boxShadow: theme.shadows[4],
+                                        backdropFilter: 'blur(8px)',
+                                        WebkitBackdropFilter: 'blur(8px)',
+                                    }}
+                                >
+                                    <Typography variant="h4" fontWeight="bold" gutterBottom align="center">
+                                        ติดต่อทีมงานของเรา
+                                    </Typography>
+                                    <Typography variant="body1" color="text.secondary" align="center" mb={4}>
+                                        เรายินดีให้คำแนะนำเรื่องการออกแบบและติดตั้งเฟอร์นิเจอร์ Built-in
+                                    </Typography>
+                                    <ContactForm />
+                                </Box>
                             </Box>
-                        </Box>
-                    </Container>
-                </Box>
+                        </Container>
+                    </Box>
+                </div>
+
+                <ContactWhyUs />
+
+                <GoogleMapEmbed />
+
+                <Footer />
             </div>
-
-            <ContactWhyUs />
-
-            <GoogleMapEmbed />
-
-            <Footer />
-        </div>
+        </h1>
     );
 
 }

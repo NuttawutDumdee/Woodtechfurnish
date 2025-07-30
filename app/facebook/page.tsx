@@ -41,7 +41,7 @@ export default function FacebookPage() {
                 {!loaded ? (
                     <div className="animate-pulse text-gray-500 text-sm">Loading Facebook Page...</div>
                 ) : (
-                    <div className="flex justify-center items-center">
+                     <div className="bg-gray-100 rounded-xl shadow-lg border border-gray-300 p-6 flex justify-center items-center min-h-[620px]">
                         <div
                             className="fb-page w-full max-w-screen-xl rounded-xl overflow-hidden shadow-xl border border-blue-100"
                             data-href="https://www.facebook.com/ExclusiveFurnitureCOLLECTION/"

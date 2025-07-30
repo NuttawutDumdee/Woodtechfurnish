@@ -5,8 +5,6 @@ import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium';
 import HandshakeIcon from '@mui/icons-material/Handshake';
 import DesignServicesIcon from '@mui/icons-material/DesignServices';
 import QueryBuilderIcon from '@mui/icons-material/QueryBuilder';
-import GallerySection from './GallerySection';
-
 
 const reasons = [
   {
@@ -107,8 +105,6 @@ export default function WhyChooseUsSection() {
           </Paper>
         ))}
       </Box>
-
-      <GallerySection image={'/images/Gallery2.jpg'} />
     </Box>
   );
 }

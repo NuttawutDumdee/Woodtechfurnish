@@ -24,7 +24,7 @@ export function TimelineDemo() {
             images: ["production1", "production2", "production3", "production4", "production5", "production6"],
         },
         {
-            title: "Warehouse",
+            title: "WareHouse",
             images: ["warehouse1", "warehouse2", "warehouse3", "warehouse4", "warehouse5"],
         },
         {
@@ -48,7 +48,7 @@ export function TimelineDemo() {
     // สร้างเนื้อหา Timeline
     const timelineData = data.map(section => {
         const content = (
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-3 gap-4">
                 {section.images.map(name => {
                     const imgPath = `/images/${name}.jpg`;
                     const altText = name;

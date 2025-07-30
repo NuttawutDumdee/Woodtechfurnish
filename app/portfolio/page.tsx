@@ -26,11 +26,11 @@ export default async function PortfolioPage() {
     const portfolios: PortfolioItem[] = await query(sql);
 
     return (
-        <div className="min-h-screen flex flex-col bg-gradient-to-b from-gray-50 via-white to-gray-100">
+        <div className="min-h-screen flex flex-col bg-gradient-to-b from-gray-50 via-white to-gray-100 mt-12">
             <Navbar />
             <main className="max-w-7xl mx-auto flex-grow px-6 sm:px-10 py-20">
-                <h1 className="text-4xl sm:text-5xl font-extrabold mb-16 text-gray-900 tracking-wide drop-shadow-md">
-                    <ComicText>Portfolio</ComicText>
+                <h1 className="text-4xl sm:text-5xl font-extrabold mb-16 text-gray-900 tracking-wide drop-shadow-md ">
+                    Portfolio
                 </h1>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-16">
