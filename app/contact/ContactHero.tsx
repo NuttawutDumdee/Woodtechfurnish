@@ -99,7 +99,7 @@ export default function ContactHero() {
                     sx={{
                         fontSize: { xs: '2rem', md: '3rem' },
                         color: '#fff',
-                        textShadow: '0 0 20px rgba(255,255,255,0.4)',
+                        textShadow: '0 0 20px rgba(255, 255, 255, 0.18)',
                         letterSpacing: 1.5,
                     }}
                 >

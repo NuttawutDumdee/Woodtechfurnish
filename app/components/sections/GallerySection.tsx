@@ -13,6 +13,8 @@ const images = [
     { src: '/images/Gallery1.jpg', alt: 'Gallery Image 3' },
     { src: '/images/Gallery5.jpg', alt: 'Gallery Image 4' },
     { src: '/images/Gallery2.jpg', alt: 'Gallery Image 5' },
+    { src: '/images/Gallery3.jpg', alt: 'Gallery Image 6' },
+    { src: '/images/Gallery6.jpg', alt: 'Gallery Image 7' },
 ];
 
 export default function FullscreenGallery() {

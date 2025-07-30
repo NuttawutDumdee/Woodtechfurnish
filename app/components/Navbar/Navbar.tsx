@@ -19,8 +19,7 @@ export default function Navbar() {
   const navLinks: NavLink[] = [
     { label: 'HOME', href: '/' },
     { label: 'PORTFOLIO', href: '/portfolio' },
-    { label: 'CONTACT', href: '/contact' },
-    { label: 'SERVICES', href: '/services' },
+    { label: 'COMPANYPROFILE', href: '/company-profile' },
     {
       label: 'CONTENT',
       dropdown: true,
@@ -30,11 +29,13 @@ export default function Navbar() {
         { label: 'YOUTUBE', href: '/youtube' },
       ],
     },
+    { label: 'SERVICES', href: '/services' },
+    { label: 'CONTACT', href: '/contact' },
   ];
 
   return (
     <nav className="bg-white/80 backdrop-blur-md border-b border-zinc-200 fixed top-0 left-0 w-full z-50 shadow-sm transition-all">
-      <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center font-serif">
+      <div className="w-full px-10 py-4 flex justify-between items-center font-serif">
         <Link
           href="/"
           className="flex items-center space-x-10 text-2xl md:text-2xl font-bold tracking-tight text-zinc-900 mr-auto"

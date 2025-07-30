@@ -1,6 +1,5 @@
 // app/page.tsx
 import HeroSection from "./components/sections/HeroSection";
-import GallerySection from "./components/sections/GallerySection";
 import CustomerReviewsSection from "./components/review1/CustomerReviewsSection";
 import Navbar from "./components/Navbar/Navbar";
 import PortfolioPreviewSection from "./components/sections/PortfolioPreviewSection";
@@ -14,8 +13,6 @@ export default function HomePage() {
       <Navbar />
 
       <HeroSection />
-
-      <GallerySection />
 
       <TimelineDemo />
 
